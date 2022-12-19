@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goods table</title>
+</head>
+<body>
+    <h3>Goods table</h3>
+    <table>
+        <tr>
+            <th>Vendor code</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Cost</th>
+        </tr>
+        {% for good in goods %}
+        <tr>
+            <td>{{ good.vendor_code }}</td>
+            <td>{{ good.quantity }}</td>
+            <td>{{ good.price }}</td>
+            <td>{{ good.costs }}</td>
+        </tr>
+        {% empty %}
+        <tr>No goods</tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

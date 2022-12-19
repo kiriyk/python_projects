@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ object.title }}</title>
+    <link rel="stylesheet" href="{% static 'app_news/style.css' %}">
+</head>
+<style>
+
+</style>
+<body>
+  <header class="header">
+      <div class="header-container header-news">
+          <p><a class="link header__link" href="{% url 'news-list' %}">Back to News list page</a></p>
+      </div>
+  </header>
+  <section class="news-comment">
+      <div class="news-comment-container">
+          <div class="news__item">
+              <div class="news__item_top">
+                  <h2>{{ object.title }}</h2>
+                  <p>{{ object.description }}</p>
+                  <p>Created date: {{ object.created_at }}</p>
+                  <p>Updated date: {{ object.updated_at }}</p>
+              </div>
+              <div class="news__item__bottom">
+                  {% if request.user.is_authenticated %}
+                  <p><b>You can add comment as {{ request.user.username }}</b></p>
+                  {% endif %}
+              </div>
+          </div>
+          <div class="news__comment">
+             {% if object.comments.all %}
+              <ul class="list">
+                  {% for comment in object.comments.all %}
+                  <li class="news__comment__list__item">
+                      {% if not comment.user %}
+                      <h3>{{ comment.username }}(Anonymous)</h3>
+                      {% else %}
+                      <h3>{{ comment.username }}</h3>
+                      {% endif %}
+                      {{ comment.comment_text }}
+                  </li>
+                  {% endfor %}
+              </ul>
+              {% else %}
+              <p>No comments</p>
+              {% endif %}
+          </div>
+          <div>
+              <form class="news__comment-new" method="post">
+                  {% csrf_token %}
+                  <div class="comment-new__content">
+                      {% if not request.user.is_authenticated %}
+                      <p class="news__comment-new__item">
+                          {{ form.username.label_tag }}
+                          {{ form.username }}
+                      </p>
+                      {% endif %}
+                      <p class="news__comment-new__item item-text">
+                          {{ form.comment_text.label_tag }}
+                          {{ form.comment_text }}
+                      </p>
+                  </div>
+                  <div class="comment-new__text">
+                      <h2>Add new comment</h2>
+                      <button type='submit'>Add</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </section>
+</body>
+</html>

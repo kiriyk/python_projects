@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <link rel="stylesheet" href="{% static 'app_users/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        {% if request.user.is_authenticated %}
+            <h2>Main Page</h2>
+                {% if request.user.first_name%}
+                    <p><b>{{ request.user.first_name }}</b>, you view this page because you are logged in</p>
+                {% else %}
+                    <p><b>{{ request.user.username }}</b>, you view this page because you are logged in</p>
+                {% endif %}
+        {% else %}
+        <h2>You are not logged in</h2>
+        {% endif %}
+    </header>
+    <section class="section-main">
+        <div class="section-main-container">
+            {% if request.user.is_authenticated %}
+            <p>If you want to log out - follow the link <a class="link" href="{% url 'logout' %}">Logout</a> </p>
+            {% else %}
+            <p>You can do it here <a class="link" href="{% url 'login' %}"><b>Login</b></a></p>
+            <p>Or you can <a class="link" href="{% url 'register' %}"><b>sign up</b></a>, if you don't have an account</p>
+            {% endif %}
+            <p>Link to the news page <a class="link" href="/news/">News page</a></p>
+            <p>Link to the admin panel <a class="link" href="/admin/">Admin</a></p>
+        </div>
+        <div class="section-main-container">
+            {% if request.user.is_authenticated %}
+                {% if request.user.first_name %}
+                    <p><b>Hello, {{ request.user.first_name }}</b></p>
+                {% else %}
+                    <p><b>Hello, {{ request.user.username }}</b></p>
+                {% endif %}
+                {% if request.user.profile.city %}
+                    <p>City: {{ request.user.profile.city }}</p>
+                {% endif %}
+                {% if request.user.profile.phone_number %}
+                    <p>Phone number: {{ request.user.profile.phone_number }}</p>
+                {% endif %}
+            <p>Number of news: {{ request.user.profile.news_count }}</p>
+                {% if request.user.profile.is_verified %}
+                <p>Your account <b>is</b> verified</p>
+                {% else %}
+                <p>Your account <b>isn't</b> verified</p>
+                {% endif %}
+            <a href="{% url 'users-verify' %}">Click here to verify users</a>
+            {% else %}
+            <p>You aren't log, do it here <a class="link" href="{% url 'login' %}"><b>Login</b></a></p>
+            {% endif%}
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,117 @@
+2022-09-02 11:52:17.464 | ERROR    | bot.bot:_check_date_diff:420 - DateTimeError
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 410, in _check_date_diff
+    raise DateDifferenceException
+          └ <class 'Diploma_project.Exceptions.DateDifferenceException'>
+
+Diploma_project.Exceptions.DateDifferenceException: Ошибка: дата выезда меньше даты заезда
+Повторите ввод!
+2022-09-02 11:56:44.900 | ERROR    | bot.bot:_check_date_diff:420 - DateTimeError
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 410, in _check_date_diff
+    raise DateDifferenceException
+          └ <class 'Diploma_project.Exceptions.DateDifferenceException'>
+
+Diploma_project.Exceptions.DateDifferenceException: Ошибка: дата выезда меньше даты заезда
+Повторите ввод!
+2022-09-08 12:57:16.335 | ERROR    | Diploma_project.Hotels_API.hotels_request:get_request:106 - An error has been caught in function 'get_request', process 'MainProcess' (5656), thread 'WorkerThread2' (7696):
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\Hotels_API\hotels_request.py", line 106, in get_request
+    dest_id = self.get_destination_id(self.city)
+              │    │                  │    └ 'Ы́ыы'
+              │    │                  └ <Diploma_project.Hotels_API.hotels_request.LowPrice object at 0x000001F16F42A760>
+              │    └ <function BaseRequest.get_destination_id at 0x000001F16FCB4A60>
+              └ <Diploma_project.Hotels_API.hotels_request.LowPrice object at 0x000001F16F42A760>
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\Hotels_API\hotels_request.py", line 58, in get_destination_id
+    if not result['suggestions'][0]['entities']:
+           └ []
+
+TypeError: list indices must be integers or slices, not str
+2022-09-08 13:08:11.081 | ERROR    | bot.bot:_check_date_diff:418 - DateTimeError
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 408, in _check_date_diff
+    raise DateDifferenceException
+          └ <class 'Diploma_project.Exceptions.DateDifferenceException'>
+
+Diploma_project.Exceptions.DateDifferenceException: Ошибка: дата выезда меньше даты заезда
+Повторите ввод!
+2022-09-08 13:08:21.895 | ERROR    | Diploma_project.Hotels_API.hotels_request:get_destination_id:69 - NoCityFound
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\Hotels_API\hotels_request.py", line 62, in get_destination_id
+    raise NoCityFoundException
+          └ <class 'Diploma_project.Exceptions.NoCityFoundException'>
+
+Diploma_project.Exceptions.NoCityFoundException: Город не найден!
+2022-09-08 19:00:26.851 | ERROR    | bot.bot:_check_date_diff:431 - DateTimeError
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 421, in _check_date_diff
+    raise DateDifferenceException
+          └ <class 'bot.Exceptions.DateDifferenceException'>
+
+bot.Exceptions.DateDifferenceException: Ошибка: дата выезда меньше даты заезда
+Повторите ввод!
+2022-09-08 19:02:03.110 | ERROR    | bot.bot:_hotel_number_check:522 - WrongNumberException
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 511, in _hotel_number_check
+    raise WrongNumberException
+          └ <class 'bot.Exceptions.WrongNumberException'>
+
+bot.Exceptions.WrongNumberException: Введено некорректное число, повторите ввод!
+2022-09-08 19:02:13.099 | ERROR    | bot.bot:_photo_number_check:542 - WrongNumberException
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 533, in _photo_number_check
+    raise WrongNumberException
+          └ <class 'bot.Exceptions.WrongNumberException'>
+
+bot.Exceptions.WrongNumberException: Введено некорректное число, повторите ввод!
+2022-09-08 19:03:58.285 | ERROR    | bot.bot:_check_min_price:451 - MinPriceException
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 444, in _check_min_price
+    raise MinPriceException
+          └ <class 'bot.Exceptions.MinPriceException'>
+
+bot.Exceptions.MinPriceException: Минимальная цена введена неверно, введите заново!
+2022-09-08 19:04:05.953 | ERROR    | bot.bot:_check_max_price:495 - MaxPriceException
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 485, in _check_max_price
+    raise MaxPriceException
+          └ <class 'bot.Exceptions.MaxPriceException'>
+
+bot.Exceptions.MaxPriceException: Максимальная цена введена неверно, введите заново!
+2022-09-08 19:04:08.463 | ERROR    | bot.bot:_check_max_price:500 - PriceDifferenceException
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 488, in _check_max_price
+    raise PriceDifferenceException
+          └ <class 'bot.Exceptions.PriceDifferenceException'>
+
+bot.Exceptions.PriceDifferenceException: Минимальная цена выше максимальной! Повторите ввод.
+2022-09-08 19:11:09.925 | DEBUG    | __main__:<module>:11 - Бот запущен!
+2022-09-08 19:17:08.803 | DEBUG    | __main__:<module>:10 - Бот запущен!
+2022-09-08 19:17:26.253 | INFO     | __main__:<module>:10 - Бот запущен!
+2022-11-01 22:33:17.213 | INFO     | __main__:<module>:8 - Бот запущен!
+2022-11-01 23:12:13.689 | INFO     | __main__:<module>:8 - Бот запущен!
+2022-11-01 23:39:57.417 | INFO     | __main__:<module>:8 - Бот запущен!
+2022-11-01 23:42:28.043 | INFO     | __main__:<module>:8 - Бот запущен!
+2022-11-01 23:42:53.281 | ERROR    | bot.bot:_check_date_diff:431 - DateTimeError
+Traceback (most recent call last):
+
+  File "C:\Users\Кирилл\PycharmProjects\Python_Basic\Python_Basic\Diploma_project\bot\bot.py", line 421, in _check_date_diff
+    raise DateDifferenceException
+          └ <class 'bot.Exceptions.DateDifferenceException'>
+
+bot.Exceptions.DateDifferenceException: Ошибка: дата выезда меньше даты заезда
+Повторите ввод!
+2022-12-19 16:17:17.028 | INFO     | __main__:<module>:8 - Бот запущен!
+2022-12-19 16:21:48.663 | INFO     | __main__:<module>:8 - Бот запущен!

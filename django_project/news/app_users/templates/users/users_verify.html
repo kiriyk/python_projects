@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users verify</title>
+</head>
+<body>
+    <p><a href="{% url 'main-page' %}">Back to the Main page</a></p>
+    <table>
+        <tr>
+            <th>Profile id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>Verification</th>
+        </tr>
+        {% for user in User %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.user.username }} </td>
+            <td>
+                {% url 'users-verify-edit' user.id as profile_url %}
+                <a href="{{ profile_url }}">{{ user.is_verified }}</a>
+            </td>
+        </tr>
+        {% empty %}
+        <td>There are no profiles</td>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link rel="stylesheet" href="{% static 'app_news/style.css' %}">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h2>News</h2>
+      <form class="form-filter" method="post">
+        {% csrf_token %}
+        <div>
+          {{ radio_form.name.label_tag }}
+          {{ radio_form.name }}
+        </div>
+        <div>
+          {{ radio_form.ordering.label_tag }}
+          {{ radio_form.ordering }}
+          <button type="submit">Filter</button>
+        </div>
+      </form>
+      <p>
+        {% if request.user.is_authenticated %}
+          <a class="link header__link" href="/users/">Logout</a>
+        {% else %}
+          <a class="link header__link" href="/users/">Login</a>
+        {% endif %}
+      </p>
+      {% if news_list %}
+    </div>
+  </header>
+  <ul class="news__list">
+    {% for news in news_list %}
+    <li class="news__list__item">
+      {% url 'news-detail' news.id as news_url %}
+      <a class="link" href="{{ news_url }}"> <h3>{{ news.title }}</h3> </a>
+      <p class="descr">{{ news.description }}</p>
+      <p class="descr">Tag: {{ news.tag }}</p>
+      <p>Date: {{ news.created_at }}</p>
+      {% if can_publish %}
+        {% if not news.is_active %}
+        {% url 'news-publish' news.id as publish_url %}
+        <a href="{{ publish_url }}">Publish</a>
+        {% else %}
+        <p><b>Already published</b></p>
+        {% endif %}
+      {% endif %}
+    </li>
+    {% endfor %}
+    <li class="news__list__item">
+      <a class="link" href="{% url 'add-news' %}"><h3>Add news</h3></a>
+    </li>
+  </ul>
+  {% else %}
+  <p>There are no news in here!</p>
+  {% endif %}
+</body>
+</html>
